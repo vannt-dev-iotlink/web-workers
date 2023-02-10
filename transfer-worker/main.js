@@ -8,7 +8,7 @@ myWorker.addEventListener("message", function handleMessageFromWorker(msg) {
   const bufTransferredBackFromWorker = msg.data;
 
   console.log(
-    "buf.byteLength in main AFTER transfer back from worker:",
+    "data in main AFTER transfer back from worker:",
     bufTransferredBackFromWorker.byteLength
   );
 });
@@ -17,7 +17,7 @@ myWorker.addEventListener("message", function handleMessageFromWorker(msg) {
 const myBuf = new ArrayBuffer(8);
 
 console.log(
-  "buf.byteLength in main BEFORE transfer to worker:",
+  "data in main BEFORE transfer to worker:",
   myBuf.byteLength
 );
 
@@ -25,6 +25,6 @@ console.log(
 myWorker.postMessage(myBuf, [myBuf]);
 
 console.log(
-  "buf.byteLength in main AFTER transfer to worker:",
+  "data in main AFTER transfer to worker:",
   myBuf.byteLength
 );

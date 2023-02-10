@@ -5,7 +5,7 @@ self.onmessage = function handleMessageFromMain(msg) {
   const bufTransferredFromMain = msg.data;
 
   console.log(
-    "buf.byteLength in worker BEFORE transfer back to main:",
+    "data in worker BEFORE transfer back to main:",
     bufTransferredFromMain.byteLength
   );
 
@@ -13,7 +13,7 @@ self.onmessage = function handleMessageFromMain(msg) {
   self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
 
   console.log(
-    "buf.byteLength in worker AFTER transfer back to main:",
+    "data in worker AFTER transfer back to main:",
     bufTransferredFromMain.byteLength
   );
 };
