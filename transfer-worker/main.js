@@ -1,25 +1,30 @@
-const first = document.querySelector('#number1');
-const second = document.querySelector('#number2');
+// create worker
+const myWorker = new Worker("worker.js");
 
-const result = document.querySelector('.result');
+// listen for myWorker to transfer the buffer back to main
+myWorker.addEventListener("message", function handleMessageFromWorker(msg) {
+  console.log("message from worker received in main:", msg);
 
-if (window.Worker) {
-  const myWorker = new Worker("worker.js");
+  const bufTransferredBackFromWorker = msg.data;
 
-  first.onchange = function() {
-    myWorker.postMessage([first.value, second.value]);
-    console.log('Message posted to worker');
-  }
+  console.log(
+    "buf.byteLength in main AFTER transfer back from worker:",
+    bufTransferredBackFromWorker.byteLength
+  );
+});
 
-  second.onchange = function() {
-    myWorker.postMessage([first.value, second.value]);
-    console.log('Message posted to worker');
-  }
+// create the buffer
+const myBuf = new ArrayBuffer(8);
 
-  myWorker.onmessage = function(e) {
-    result.textContent = e.data;
-    console.log('Message received from worker');
-  }
-} else {
-  console.log('Your browser doesn\'t support web workers.');
-}
+console.log(
+  "buf.byteLength in main BEFORE transfer to worker:",
+  myBuf.byteLength
+);
+
+// send myBuf to myWorker and transfer the underlying ArrayBuffer
+myWorker.postMessage(myBuf, [myBuf]);
+
+console.log(
+  "buf.byteLength in main AFTER transfer to worker:",
+  myBuf.byteLength
+);
