@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Workers channel</title>
+  </head>
+  <body>
+    <div>
+      <h1>Workers communication</h1>
+      <div id="log">
+    <div>
+      <input type="text" placeholder="Enter message..."  id="msg" /><br />
+      <button onclick="sendw1()">
+        Send to worker1
+      </button>
+      <button onclick="sendw2()">
+        Send to worker2
+      </button><br />
+      <button onclick="sendch1()">
+        Send to channel from worker1
+      </button>
+      <button onclick="sendch2()">
+        Send to channel from worker2
+      </button>
+    </div>
+    <br />
+  </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

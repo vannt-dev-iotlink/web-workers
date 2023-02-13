@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Workers channel</title>
+  </head>
+
+  <body>
+    <div>
+      <h1>Workers channel</h1>
+      <div id="log">
+      <div>
+        <input type="text" placeholder="Enter message..."  id="msg" /><br />
+        <button onclick="sendw()">
+          Send to worker
+        </button>
+        <button onclick="sendch()">
+          Send channel in worker
+        </button><br />
+      </div>
+      <br />
+    </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
